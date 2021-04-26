@@ -2,13 +2,13 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <map>
+#include <unordered_map>
 const double EPS = 0.0001;
 using namespace std;
 
 namespace ariel{
 
-    static map<string, map<string, double>> list;
+    static unordered_map<string, unordered_map<string, double>> list;
 
     // Constructor - checking if the unit exist in the map
     NumberWithUnits::NumberWithUnits(double value, const string& unit) {
