@@ -2,45 +2,46 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-#include <stdexcept>
+// #include <stdexcept>
 using namespace std;
 
 namespace ariel {
 
     class NumberWithUnits {
-        public:
+    public:
         string unit;
-        double num;
-
+        double value;
+        NumberWithUnits(double value, const string& unit);
         static void read_units(ifstream& units_file);
-        NumberWithUnits(double num, const string& unit): num(num), unit(unit){}
 
-        //arithmetic operators
-        friend NumberWithUnits operator+(const NumberWithUnits& n1, double n2);
-        friend NumberWithUnits operator+(const NumberWithUnits& n1, const NumberWithUnits& n2);
-        friend NumberWithUnits operator+=(NumberWithUnits& n1, const NumberWithUnits& n2);
-        friend NumberWithUnits operator-(const NumberWithUnits& num);
-        friend NumberWithUnits operator-(const NumberWithUnits& n1, const NumberWithUnits& n2);
-        friend NumberWithUnits operator-=(NumberWithUnits& n1, const NumberWithUnits& n2);
+        //______________ + - ______________//
+        NumberWithUnits operator+(const NumberWithUnits& n) const;
+        NumberWithUnits operator-(const NumberWithUnits& n) const;
+        NumberWithUnits operator+();
+        NumberWithUnits operator-();
+        NumberWithUnits& operator+=(const NumberWithUnits& n);
+        NumberWithUnits& operator-=(const NumberWithUnits& n);
 
-        friend NumberWithUnits operator++(NumberWithUnits& num);
-        friend NumberWithUnits operator++(NumberWithUnits& num, int);
-        friend NumberWithUnits operator--(NumberWithUnits& num);
-        friend NumberWithUnits operator--(NumberWithUnits& num, int);
+        //______________ ++ -- ______________//
+        NumberWithUnits& operator++();
+        NumberWithUnits& operator--();
+        NumberWithUnits operator++(int);
+        NumberWithUnits operator--(int);
 
-        friend bool operator>(const NumberWithUnits& n1, const NumberWithUnits& n2);
-        friend bool operator<(const NumberWithUnits& n1, const NumberWithUnits& n2);
-        friend bool operator>=(const NumberWithUnits& n1, const NumberWithUnits& n2);
-        friend bool operator<=(const NumberWithUnits& n1, const NumberWithUnits& n2);
-        friend bool operator==(const NumberWithUnits& n1, const NumberWithUnits& n2);
-        friend bool operator!=(const NumberWithUnits& n1, const NumberWithUnits& n2);
+        //______________ * ______________//
+        NumberWithUnits operator*(double d) const;
+        friend NumberWithUnits operator*(double d, const NumberWithUnits& n);
 
-        friend NumberWithUnits operator*(const NumberWithUnits& n1, double n2);
-        friend NumberWithUnits operator*(double n1, const NumberWithUnits& n2);
-        friend NumberWithUnits operator*=(NumberWithUnits& n1, double n2);
-        friend NumberWithUnits operator*=(double n1, NumberWithUnits& n2);
+        //______________ == ______________//
+        bool operator>(const NumberWithUnits& n) const;
+        bool operator<(const NumberWithUnits& n) const;
+        bool operator>=(const NumberWithUnits& n) const;
+        bool operator<=(const NumberWithUnits& n) const;
+        bool operator==(const NumberWithUnits& n) const;
+        bool operator!=(const NumberWithUnits& n) const;
 
-        friend istream& operator>>(istream& is, NumberWithUnits& num);
-        friend ostream& operator<<(ostream& os, const NumberWithUnits& num);
+        //______________ in & out ______________//
+        friend istream& operator>>(istream& is, NumberWithUnits& n);
+        friend ostream& operator<<(ostream& os, const NumberWithUnits& n);
     };
 }
