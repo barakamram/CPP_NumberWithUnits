@@ -5,9 +5,6 @@
 using namespace std;
 using namespace ariel;
 ifstream units_file{"myUnits.txt"};
-const double EPS = 0.0001;
-
-
 int main() {
   NumberWithUnits::read_units(units_file);
   cout<< "Hello, welcome to my units calculator "<<'\n'<<endl;
@@ -26,7 +23,7 @@ int main() {
       cout<<'\n'<<"choose operator: +, -, +=, -=, ++, --, *,*=, ==, !=, >, <, >=, <= "<<endl;
       cout<< "a = "<< a <<'\n'<<"b = "<< b <<endl;
       cin>>op;
-      //__________________ +,- __________________//
+      //__________________ + - __________________//
       if(op=="+"){
         cout <<"a+b = "<< (a+b) <<'\n';
       }
@@ -34,7 +31,7 @@ int main() {
         cout <<"a-b = "<< (a-b) <<'\n';
       }
 
-      //__________________ +=,-= __________________//
+      //__________________ += -= __________________//
       if(op=="+="){
         cout << "which number do you want to increase: a or b -> ";
         cin >> choose;
@@ -56,7 +53,7 @@ int main() {
         }
       }
 
-      //__________________ ++,-- __________________//
+      //__________________ ++ -- __________________//
       if(op=="++"){
         cout << "which number do you want to increase: a or b -> ";
         cin >> choose;
@@ -78,7 +75,7 @@ int main() {
         }
       }
 
-      //__________________ *,*= __________________//
+      //__________________ * *= __________________//
       if(op=="*"){
         cout << "which number do you want to multiply: a or b -> ";
         cin>>choose;
