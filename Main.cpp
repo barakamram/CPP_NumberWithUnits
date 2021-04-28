@@ -5,6 +5,8 @@
 using namespace std;
 using namespace ariel;
 ifstream units_file{"myUnits.txt"};
+const double EPS = 0.0001;
+
 
 int main() {
   NumberWithUnits::read_units(units_file);
@@ -16,6 +18,7 @@ int main() {
   NumberWithUnits b{0, "m"};
   cin>>a;
   cin>>b;
+  if(!(a>=b||a<b)){return 0;}
   string op, choose;
   double n;
   cout<< "Press E to exit"<<endl;
