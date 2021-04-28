@@ -88,12 +88,16 @@ namespace ariel{
       return NumberWithUnits(value--,unit);
     }
 
-    //______________ * ______________//
+    //______________ * *= ______________//
     NumberWithUnits NumberWithUnits::operator*(double d) const{
       return d*(*this);
     }
     NumberWithUnits operator*(double d, const NumberWithUnits& n){
       return NumberWithUnits(d * n.value, n.unit);
+    }
+    NumberWithUnits NumberWithUnits::operator*=(double d){
+      value  = value*d;
+      return *this;
     }
 
     //______________ == ______________//

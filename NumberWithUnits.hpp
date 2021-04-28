@@ -2,11 +2,8 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-// #include <stdexcept>
 using namespace std;
-
 namespace ariel {
-
     class NumberWithUnits {
     public:
         string unit;
@@ -28,9 +25,10 @@ namespace ariel {
         NumberWithUnits operator++(int);
         NumberWithUnits operator--(int);
 
-        //______________ * ______________//
+        //______________ * *= ______________//
         NumberWithUnits operator*(double d) const;
         friend NumberWithUnits operator*(double d, const NumberWithUnits& n);
+        NumberWithUnits operator*=(double d);
 
         //______________ == ______________//
         bool operator>(const NumberWithUnits& n) const;
